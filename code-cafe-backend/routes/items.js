@@ -6,6 +6,14 @@ itemRoutes.get('/', (req, res) => {
   setTimeout(
     () => res.json([
       {
+        itemId: '42',
+        imageId: 'milk',
+        title: 'TTT',
+        price: 0.42,
+        description: 'What is the purpose of life?',
+        salePrice: 0,
+      },
+      {
         itemId: 'coffee',
         imageId: 'coffee',
         title: 'Coffee',
