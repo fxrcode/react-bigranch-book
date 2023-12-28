@@ -18,4 +18,10 @@
 
 
 ## TODO
-[ ] repace given code-cafe-backend w/ go[1], rust[2], fastapi[3]
+- [ ] repace given code-cafe-backend w/ go[^1], rust[^2], fastapi
+
+
+## Footnotes
+
+- [^1]: chi ? or HTTProuter? https://www.alexedwards.net/blog/which-go-router-should-i-use
+- [^2]: not decided

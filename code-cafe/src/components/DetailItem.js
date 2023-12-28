@@ -4,9 +4,13 @@ import { itemImages } from '../items';
 import ItemType from '../types/item';
 import './DetailItem.css';
 
-function DetailItem({ items }) {
+function DetailItem({ addToCart, items }) {
   const { id } = useParams();
   const detailItem = items.find((item) => item.itemId === id);
+
+  const addItemToCart = () => {
+    addToCart(detailItem.itemId);
+  };
   return (
     <div className="detail-item-component">
       {detailItem ? (
@@ -20,9 +24,14 @@ function DetailItem({ items }) {
           {!!detailItem.description && <h6>{detailItem.description}</h6>}
           <div>
             $
-            {/* {detailItem.price.toFixed(2)} */}
             {(detailItem.salePrice ?? detailItem.price).toFixed(2)}
           </div>
+          <button
+            type="button"
+            onClick={addItemToCart}
+          >
+            Add to YOUR Cart
+          </button>
         </>
       ) : (
         <h2>Unknownnn Item</h2>
@@ -32,6 +41,7 @@ function DetailItem({ items }) {
 }
 
 DetailItem.propTypes = {
+  addToCart: PropTypes.func.isRequired,
   items: PropTypes.arrayOf(ItemType).isRequired,
 };
 
