@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import './Thumbnail.css';
 import { Link } from 'react-router-dom';
+import './Thumbnail.css';
 
 function Thumbnail({ itemId, image, title }) {
   return (

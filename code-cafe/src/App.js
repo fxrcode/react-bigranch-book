@@ -1,12 +1,17 @@
 import axios from 'axios';
 import { useEffect, useReducer, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from 'react-router-dom';
+import DetailItem from './components/DetailItem';
+import Cart from './components/Cart';
 import Details from './components/Details';
 import Header from './components/Header';
 import Home from './components/Home';
 import NotFound from './components/NotFound';
-import DetailItem from './components/DetailItem';
-import { CartTypes, cartReducer, initialCartState } from './reducers/cartReducer';
+import { cartReducer, CartTypes, initialCartState } from './reducers/cartReducer';
 
 function App() {
   const [items, setItems] = useState([]);
@@ -23,11 +28,18 @@ function App() {
     <Router>
       <Header cart={cart} />
       {items.length === 0
-        ? <div>Loading .... hold on tight ...</div>
+        ? <div>Loading...</div>
         : (
           <Routes>
+            <Route
+              path="/cart"
+              element={<Cart cart={cart} dispatch={dispatch} items={items} />}
+            />
             <Route path="/details" element={<Details items={items} />}>
-              <Route path=":id" element={<DetailItem items={items} addToCart={addToCart} />} />
+              <Route
+                path=":id"
+                element={<DetailItem items={items} addToCart={addToCart} />}
+              />
               <Route index element={<div>No Item Selected</div>} />
             </Route>
             <Route path="/" element={<Home items={items} />} />

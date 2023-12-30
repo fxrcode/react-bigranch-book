@@ -10,9 +10,9 @@ function Home({ items }) {
       {items.map((item) => (
         <Thumbnail
           key={item.itemId}
+          itemId={item.itemId}
           image={itemImages[item.imageId]}
           title={item.title}
-          itemId={item.itemId}
         />
       ))}
     </div>
